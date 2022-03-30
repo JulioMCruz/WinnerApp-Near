@@ -1,11 +1,11 @@
 # WinnerApp
 ==================
 > Proyecto realizado para el NCD de NEAR Hispano.
-## WinnerApp es un servicio que, a través de la blockchain de NEAR, buscar generar un fondo para que estudiantes puedan acceder a cursos.
+## WinnerApp es un servicio que, a través de la blockchain de NEAR, facilita a las organizaciones en sus procesos de votacion de una manera simple y agil.
 
 # Diagrama de la Solucion:
 
-![Alt text](/Documentos/doc_v3.jpg?raw=true "Title")
+<!-- ![Alt text](/Documentos/doc_v3.jpg?raw=true "Title")-->
 
 # WinnerApp permite:
     1. 
