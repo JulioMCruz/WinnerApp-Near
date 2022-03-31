@@ -27,12 +27,11 @@ A los Votantes:
 
 ## Diagrama de la Solucion:
 
-<!-- ![Alt text](/Documentos/doc_v3.jpg?raw=true "Title")-->
 
 ## Wireframes
 
 <p float="left">
-  <a href="/Documents/Wireframes/Inicio.png" target="_blank"><img src="/Documents/Wireframes/Inicio.png" width="250" /></a>
+  <img src="/Documents/Wireframes/Inicio.png" width="250" />
   <img src="/Documents/Wireframes/Busqueda_Votacion.png" width="250" />
   <img src="/Documents/Wireframes/Dashboard.png" width="250" />
 </p>
