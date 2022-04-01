@@ -61,14 +61,24 @@ A los Votantes:
 ### Instalar y compilar el contrato
 ```bash
     npm install
-    npm run build
+    npm run build:contract
 ```
 
 ### Ejecutar tests del contrato
 ```bash
-    npm run build
+    npm run test
 ```
+## Deployar el contrato en una cuenta developer
 
+Borrar la carpeta **WinnerApp/neardev**
+
+Compilar y desplegar el contrato con el siguiente comando:
+```bash
+    npm run nearDevDeploy
+```
+El comando dara como resultado el despliegue del contrato u rewtornara el accountID que hizo el despliegue.
+
+## Deployar el contrato en una cuenta propia
 ### Create una Sub-Cuenta (reemplazar `YOUR_ACCOUNT_ID` con tu actual nombre de cuenta en minusculas):
 ```bash
     near create-account winnerapp-as-contract.YOUR_ACCOUNT_ID.testnet --masterAccount YOUR_ACCOUNT_ID.testnet
@@ -80,14 +90,25 @@ A los Votantes:
 ```
 Donde CONTRACT_ACCOUNT_ID es igual al valor de  winnerapp-as-contract.YOUR_ACCOUNT_ID.testnet del paso anterior.
 
+## Crear Variables de entorno
+
+Para ejecutar las funciones del contrato crearemos 2 variables de entorno
+
+```bash
+export CONTRACT_ACCOUNT_ID=<contract-deployed-account-id>
+export USER_ACCOUNT_ID=<your-testnet-account>
+```
+
+Para validar las variables de entorno ejecutar el siguiente comando:
+```bash
+echo $CONTRACT_ACCOUNT_ID
+echo $USER_ACCOUNT_ID
+```
 
 ### Correr comandos
-Una vez deployado el contrato, usaremos el Account Id devuelto por la operacion para ejecutar los comandos, que será el account 
-Id del contrato [será utilizado como CONTRACT_ACCOUNT_ID en los ejemplos de comandos]
+Una vez deployado el contrato, usaremos el Account Id devuelto para ejecucion de los comandos. Luego del despliegue del contratos NEAR retornara el Id del contrato (será utilizado como CONTRACT_ACCOUNT_ID en los ejemplos de comandos).
 
-Utilizaremos YOUR_ACCOUNT_ID para identificar el account Id que utilizamos para hacer las llamadas a los métodos.
-
-Utilizaremos WINNERAPP_ACCOUNT_ID para identificar el account Id de la cuenta de quien deplega el contrato.
+Utilizaremos USER_ACCOUNT_ID para identificar el account Id de la cuenta de quien utiliza las funciones del contrato.
 
 ### Obtener información del Mensaje
 ```bash
