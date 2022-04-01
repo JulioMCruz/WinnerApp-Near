@@ -4,11 +4,26 @@ import { ProposalStatus, VoteOption } from './enums'
 
 
 
+
 @nearBindgen
 export class VoteDetail {
     title: string;
     description: string;
+}
+
+@nearBindgen
+export class VoteTotals {
+    title: string;
+    description: string;
     count: u64;
+    constructor(
+        title: string,
+        description: string
+    ){
+        this.title = title;
+        this.description = description;
+        this.count = 0;
+    }
 }
 
 @nearBindgen
@@ -18,11 +33,24 @@ export class Proposal {
     title: string;
     description: string;
     status:  ProposalStatus;
-    maxOptions: u16;
-    currentOptions: u16;
-    maxVotes: u16;
-    options: PersistentMap<VoteOption, VoteDetail>;
+    totalOptions: u16;
+    options: PersistentMap<string, VoteTotals>;
     votes: PersistentMap<AccountId, VoteOption>;
+    constructor(
+        proposalId: string,
+        proposer: AccountId,
+        title: string,
+        description: string,
+        status:  ProposalStatus,
+        totalOptions: u16
+    ){
+        this.proposalId = proposalId;
+        this.proposer = proposer;
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.totalOptions = totalOptions;
+    }
 }
 
 @nearBindgen
