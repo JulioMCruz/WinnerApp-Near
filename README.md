@@ -117,13 +117,55 @@ Una vez deployado el contrato, usaremos el Account Id devuelto para ejecucion de
 
 Utilizaremos USER_ACCOUNT_ID para identificar el account Id de la cuenta de quien utiliza las funciones del contrato.
 
-### Obtener información del Mensaje
+## Organizaciones
+### Add Organization
 ```bash
-    near call CONTRACT_ACCOUNT_ID getGreeting '{"accountId":"YOUR_ACCOUNT_ID"}' --accountId YOUR_ACCOUNT_ID
+    near call  $CONTRACT_ACCOUNT_ID addOrganization '{"accountId": "juliomcruz.testnet","name": "Demo Org","description": "NCD Demo Org"}' --accountId $USER_ACCOUNT_ID
 ```
-### Grabar un Mensaje
+### Delete Organization
 ```bash
-    near call CONTRACT_ACCOUNT_ID setGreeting '{"message": "Write Message Here"}' --accountId YOUR_ACCOUNT_ID
+    near call  $CONTRACT_ACCOUNT_ID deleteOrganization '{"organizationId": "86451810"}'  --accountId $USER_ACCOUNT_ID
+```
+
+### Get Organization List
+```bash
+    near call  $CONTRACT_ACCOUNT_ID getOrganizationList  --accountId $USER_ACCOUNT_ID
+```
+
+## Usuarios
+### Add User
+```bash
+    near call  $CONTRACT_ACCOUNT_ID addUser '{"accountId": "juliomcruz.testnet", "name": "Julio M Cruz", "email": "julio.cruz@eb-ms.net"}'  --accountId $USER_ACCOUNT_ID
+```
+### Delete User
+```bash
+    near call  $CONTRACT_ACCOUNT_ID deleteUser '{"accountId": "juliomcruz.testnet"}'  --accountId $USER_ACCOUNT_ID
+```
+### User List
+```bash
+    near call  $CONTRACT_ACCOUNT_ID getUserList  --accountId $USER_ACCOUNT_ID
+```
+
+## Proposals (Votos)
+### Add Proposal
+```bash
+    near call  $CONTRACT_ACCOUNT_ID addProposal  '{"proposerId": "juliomcruz.testnet", "title": "Desea llevar el NCD nuevamente?","description": "April fools question","options": [{"title":"Si", "description": "Esta es la opcion para NCD lovers"}, {"title":"No", "description": "Esta es la opcion si estas listo para el Next level"}, {"title":"No se", "description": "Esta es la opcion si no deseas opinar"}] }' --accountId $USER_ACCOUNT_ID
+```
+### Delete Proposal
+```bash
+    near call  $CONTRACT_ACCOUNT_ID deleteProposal '{"proposalId": "86484281"}'  --accountId $USER_ACCOUNT_ID
+```
+### Get Proposal List
+```bash
+    near call  $CONTRACT_ACCOUNT_ID getProposalList --accountId $USER_ACCOUNT_ID
+```
+### Get Proposal
+```bash
+    near call  $CONTRACT_ACCOUNT_ID getProposal '{"proposalId": "86488146"}' --accountId $USER_ACCOUNT_ID
+```
+### Proposal Option
+```bash
+    near call  $CONTRACT_ACCOUNT_ID getProposalOptions '{"proposalId": "86488146"}' --accountId $USER_ACCOUNT_ID
 ```
 
 ### Estructura de la Solucion 
