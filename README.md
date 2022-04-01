@@ -3,17 +3,45 @@
 > Proyecto realizado para el NCD de NEAR Hispano.
 ## WinnerApp es un servicio que, a través de la blockchain de NEAR, facilita a las organizaciones en sus procesos de votacion de una manera simple y agil.
 
-# Diagrama de la Solucion:
+Está solucion dirigido a organizaciones con campañas de marketing abiertas al público, comunidades abiertas en redes, investigaciones de campo abiertas y anónimas, permite recoger la mayor cantidad posible de votos, los contabiliza y emite un ganador.
 
-<!-- ![Alt text](/Documentos/doc_v3.jpg?raw=true "Title")-->
+## WinnerApp permite:
 
-# WinnerApp permite:
+A los Patrocinadores:
+
     1. 
     2. 
     3. 
     4. 
     5. 
     6. 
+
+A los Votantes:
+
+    1. 
+    2. 
+    3. 
+    4. 
+    5. 
+    6. 
+
+## Diagrama de la Solucion:
+
+
+## Wireframes
+
+<p float="left">
+  <img src="/Documents/Wireframes/Inicio.png" width="250" />
+  <img src="/Documents/Wireframes/Busqueda_Votacion.png" width="250" />
+  <img src="/Documents/Wireframes/Dashboard.png" width="250" />
+</p>
+
+<p float="left">
+  <img src="/Documents/Wireframes/Crear_Votacion.png" width="250" />
+  <img src="/Documents/Wireframes/Participar_en_Votacion.png" width="250" />
+  <img src="/Documents/Wireframes/Reportes.png" width="250" />
+</p>
+
 
 ## Pre-requisitos
 
@@ -26,7 +54,9 @@
 4. Autorizar app para dar acceso a la cuenta de NEAR
     ```bash
     near login
-    ```
+
+
+## Despliege y Ejecucion del contrato
 
 ### Instalar y compilar el contrato
 ```bash
@@ -51,13 +81,13 @@
 Donde CONTRACT_ACCOUNT_ID es igual al valor de  winnerapp-as-contract.YOUR_ACCOUNT_ID.testnet del paso anterior.
 
 
-## Correr comandos
+### Correr comandos
 Una vez deployado el contrato, usaremos el Account Id devuelto por la operacion para ejecutar los comandos, que será el account 
 Id del contrato [será utilizado como CONTRACT_ACCOUNT_ID en los ejemplos de comandos]
 
 Utilizaremos YOUR_ACCOUNT_ID para identificar el account Id que utilizamos para hacer las llamadas a los métodos.
 
-Utilizaremos DONATE_ACCOUNT_ID para identificar el account Id de la cuenta de la Fundacion.
+Utilizaremos WINNERAPP_ACCOUNT_ID para identificar el account Id de la cuenta de quien deplega el contrato.
 
 ### Obtener información del Mensaje
 ```bash
@@ -85,3 +115,6 @@ Utilizaremos DONATE_ACCOUNT_ID para identificar el account Id de la cuenta de la
 
   2 directories, 9 files
 ```
+## Colaboradores
+- [Alessandra Caraballo - @Aless30](https://github.com/Aless30)
+- [Julio M Cruz - @JulioMCruz](https://github.com/JulioMCruz)
