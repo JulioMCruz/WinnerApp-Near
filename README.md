@@ -177,7 +177,10 @@ Utilizaremos USER_ACCOUNT_ID para identificar el account Id de la cuenta de quie
   |-- as-pect.config.js --
   `-- assembly           
       |-- as_types.d.ts -- 
+      |-- common.ts      -- 
+      |-- enums.ts      -- 
       |-- index.ts      -- 
+      |-- models.ts      -- 
       |-- tsconfig.json -- 
       `-- __tests__     
           |-- as-pect.d.ts  -- 
