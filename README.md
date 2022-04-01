@@ -120,7 +120,7 @@ Utilizaremos USER_ACCOUNT_ID para identificar el account Id de la cuenta de quie
 ## Organizaciones
 ### Add Organization
 ```bash
-    near call  $CONTRACT_ACCOUNT_ID addOrganization '{"accountId": "juliomcruz.testnet","name": "Demo Org","description": "NCD Demo Org"}' --accountId $USER_ACCOUNT_ID
+    near call  $CONTRACT_ACCOUNT_ID addOrganization '{"accountId": "my-account.testnet","name": "Demo Org","description": "NCD Demo Org"}' --accountId $USER_ACCOUNT_ID
 ```
 ### Delete Organization
 ```bash
@@ -135,11 +135,11 @@ Utilizaremos USER_ACCOUNT_ID para identificar el account Id de la cuenta de quie
 ## Usuarios
 ### Add User
 ```bash
-    near call  $CONTRACT_ACCOUNT_ID addUser '{"accountId": "juliomcruz.testnet", "name": "Julio M Cruz", "email": "julio.cruz@eb-ms.net"}'  --accountId $USER_ACCOUNT_ID
+    near call  $CONTRACT_ACCOUNT_ID addUser '{"accountId": "my-account.testnet", "name": "Nombre", "email": "email@email.com"}'  --accountId $USER_ACCOUNT_ID
 ```
 ### Delete User
 ```bash
-    near call  $CONTRACT_ACCOUNT_ID deleteUser '{"accountId": "juliomcruz.testnet"}'  --accountId $USER_ACCOUNT_ID
+    near call  $CONTRACT_ACCOUNT_ID deleteUser '{"accountId": "my-account.testnet"}'  --accountId $USER_ACCOUNT_ID
 ```
 ### User List
 ```bash
@@ -149,7 +149,7 @@ Utilizaremos USER_ACCOUNT_ID para identificar el account Id de la cuenta de quie
 ## Proposals (Votos)
 ### Add Proposal
 ```bash
-    near call  $CONTRACT_ACCOUNT_ID addProposal  '{"proposerId": "juliomcruz.testnet", "title": "Desea llevar el NCD nuevamente?","description": "April fools question","options": [{"title":"Si", "description": "Esta es la opcion para NCD lovers"}, {"title":"No", "description": "Esta es la opcion si estas listo para el Next level"}, {"title":"No se", "description": "Esta es la opcion si no deseas opinar"}] }' --accountId $USER_ACCOUNT_ID
+    near call  $CONTRACT_ACCOUNT_ID addProposal  '{"proposerId": "my-account.testnet", "title": "Desea llevar el NCD nuevamente?","description": "April fools question","options": [{"title":"Si", "description": "Esta es la opcion para NCD lovers"}, {"title":"No", "description": "Esta es la opcion si estas listo para el Next level"}, {"title":"No se", "description": "Esta es la opcion si no deseas opinar"}] }' --accountId $USER_ACCOUNT_ID
 ```
 ### Delete Proposal
 ```bash
