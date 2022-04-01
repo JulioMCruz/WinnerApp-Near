@@ -3,22 +3,6 @@ import { AccountId, Balance, Duration, Option, OptionCount } from './types'
 import { ProposalStatus, VoteOption } from './enums'
 
 
-@nearBindgen
-export class WinnerFactory {
-    proposals: PersistentSet<AccountId>;
-    organizations: PersistentSet<AccountId>;
-    users: PersistentSet<AccountId>;
-
-    constructor(
-        proposals: PersistentSet<AccountId>,
-        organizations: PersistentSet<AccountId>,
-        users: PersistentSet<AccountId>    
-        ) {
-        proposals = this.proposals
-        organizations = this.organizations
-        users = this.users
-    }
-}
 
 @nearBindgen
 export class VoteDetail {
@@ -43,14 +27,17 @@ export class Proposal {
 
 @nearBindgen
 export class User {
+    rowId: string;
     accountId: AccountId;
     name: string;
     email: string;
     constructor(
+        rowId: string,
         accountId: AccountId,
         name: string,
         email: string
     ){
+        this.rowId = rowId;
         this.accountId = accountId;
         this.name = name;
         this.email = email;

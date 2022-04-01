@@ -3,30 +3,36 @@
 > Proyecto realizado para el NCD de NEAR Hispano.
 ## WinnerApp es un servicio que, a través de la blockchain de NEAR, facilita a las organizaciones en sus procesos de votacion de una manera simple y agil.
 
-Está solucion dirigido a organizaciones con campañas de marketing abiertas al público, comunidades abiertas en redes, investigaciones de campo abiertas y anónimas, permite recoger la mayor cantidad posible de votos, los contabiliza y emite un ganador.
+Está solucion dirigido a organizaciones con campañas de marketing abiertas al público, comunidades abiertas en redes, investigaciones de campo abiertas y anónimas, permite recoger la mayor cantidad posible de votos, los contabiliza y emite el resultado de la votacion.
 
 ## WinnerApp permite:
 
 A los Patrocinadores:
 
-    1. 
-    2. 
-    3. 
-    4. 
-    5. 
-    6. 
+    1. Crear Votaciones.
+    2. Crear Organizaciones.
+    3. Aprovar el acceso a miembros de la organizacion.
+    4. Aprovar el acceso a miembros de la votacion.
+    5. Iniciar la votacion.
+    6. Cerrar la votacion.
+    7. Generar reporte de resultados.
+    8. Auditar la votacion en el explorador de transacciones.
 
-A los Votantes:
+A los Usuarios:
 
-    1. 
-    2. 
-    3. 
-    4. 
-    5. 
-    6. 
+    1. Buscar votaciones activas. 
+    2. Inscribirse en una votacion.
+    3. Participar en una votacion.
+    4. Inscribirse en una Organizacion
+    5. Acceder a los resultados de la votacion.
+    6. Auditar la votacion en el explorador de transacciones.
 
 ## Diagrama de la Solucion:
 
+<p float="left">
+  <img src="/Documents/Diagramas/UseCase/Patrocinador.png" width="450" />
+  <img src="/Documents/Diagramas/UseCase/Usuario.png" width="450" />
+</p>
 
 ## Wireframes
 
@@ -51,10 +57,11 @@ A los Votantes:
     npm install -g near-cli
     ```
 3. Crear una cuenta de NEAR en [testnet](https://docs.near.org/docs/develop/basics/create-account#creating-a-testnet-account)   
+   
 4. Autorizar app para dar acceso a la cuenta de NEAR
     ```bash
     near login
-
+    ```
 
 ## Despliege y Ejecucion del contrato
 
@@ -86,7 +93,7 @@ El comando dara como resultado el despliegue del contrato u rewtornara el accoun
 
 ### Deployar el contrato
 ```bash
-    near deploy --accountId CONTRACT_ACCOUNT_ID
+    near deploy $CONTRACT_ACCOUNT_ID --wasmFile <ruta/archivo>
 ```
 Donde CONTRACT_ACCOUNT_ID es igual al valor de  winnerapp-as-contract.YOUR_ACCOUNT_ID.testnet del paso anterior.
 

@@ -1,13 +1,16 @@
 
 import { Context, logging, PersistentUnorderedMap, storage , PersistentSet} from 'near-sdk-as'
-import { WinnerFactory, Proposal, User, Organization } from './models'
+import { Proposal, User, Organization } from './models'
 import { AccountId } from './types'
+import { Common } from './common'
 
 const users = new PersistentUnorderedMap<AccountId, User>("u");
 const proposals = new PersistentUnorderedMap<AccountId, Proposal>("p");
 const organizations = new PersistentUnorderedMap<AccountId, Organization>("o");
 
 const MAX_DESCRIPTION_LENGTH: u32 = 280
+
+let tools = new Common();
 
 /*
 ********************
@@ -19,8 +22,8 @@ export function addOrganization (
   name: string, 
   description: string ): string 
 {
-  assert(!isNullOrEmpty(accountId), "AccountId is required.");
-  assert(!isNullOrEmpty(name), "Name is required.");
+  assert(!tools.isNullOrEmpty(accountId), "AccountId is required.");
+  assert(!tools.isNullOrEmpty(name), "Name is required.");
   assert(<u32>(description.length) < MAX_DESCRIPTION_LENGTH, 'Description length is too long.');
 
   let organizationId = Context.blockIndex.toString();
@@ -30,12 +33,22 @@ export function addOrganization (
   return organizationId;
 }
 
+export function deleteOrganization(
+  organizationId: AccountId, 
+): void {
+  assert(!tools.isNullOrEmpty(organizationId), "AccountId is required.");
+  assert(organizations.contains(organizationId), 'Organization not exist.');
+  // needs more implementation
+  organizations.delete(organizationId);
+  logging.log("OrganizationId : " + organizationId + " deleted.");
+}
+
 export function addOrganizationUser(
   organizationId: AccountId,
   userId: AccountId
 ) : void {
-  assert(!isNullOrEmpty(organizationId), "OrganizationId is required.");
-  assert(!isNullOrEmpty(userId), "UserId is required.");
+  assert(!tools.isNullOrEmpty(organizationId), "OrganizationId is required.");
+  assert(!tools.isNullOrEmpty(userId), "UserId is required.");
   assert(organizations.contains(organizationId), 'Organization not exist.');
   assert(users.contains(userId), 'User not exist.');
 
@@ -51,7 +64,7 @@ export function getOrganizationList(): Array<Organization> {
 export function getOrganization(
   accountId: AccountId
 ): Organization {
-  assert(!isNullOrEmpty(accountId), "AccountId is required.");
+  assert(!tools.isNullOrEmpty(accountId), "AccountId is required.");
   assert(organizations.contains(accountId), 'Organization not exist.');
   return organizations.getSome(accountId);
 }
@@ -66,27 +79,30 @@ export function addUser(
   name: string,
   email: string  
 ): User {
-  assert(!isNullOrEmpty(accountId), "AccountId is required.");
-  assert(!isNullOrEmpty(name), "Name is required.");
+  assert(!tools.isNullOrEmpty(accountId), "AccountId is required.");
+  assert(!tools.isNullOrEmpty(name), "Name is required.");
   assert(<u32>(name.length) < MAX_DESCRIPTION_LENGTH, 'name length is too long.');
   assert(!users.contains(accountId), 'User already exist.');
-  let user = new User(accountId,name,email);
+  let rowId = Context.blockIndex.toString();
+  let user = new User(rowId,accountId,name,email);
   users.set(accountId,user);
   logging.log("User with account " + accountId + " was added to the system.");
   return user;
 }
 
-
-/*
-***************
-Private Methods
-***************
-*/
-
-function isNullOrEmpty(value: string): boolean {
-  if (!value) {
-    return true;
-  } else {
-    return false;
-  }
+export function deleteUser(
+  accountId: AccountId, 
+): void {
+  assert(!tools.isNullOrEmpty(accountId), "AccountId is required.");
+  assert(users.contains(accountId), 'AccountId not exist.');
+  // needs more implementation
+  users.delete(accountId);
+  logging.log("AccountId : " + accountId + " deleted.");
 }
+
+export function getUserList(): Array<User> {
+  return users.values();
+}
+
+
+
